@@ -1,0 +1,23 @@
+services:
+    mongo:
+        image: mongo:latest
+        container_name: mongodb
+        restart: always
+        environment:
+            MONGO_INITDB_ROOT_USERNAME: 
+            MONGO_INITDB_ROOT_PASSWORD: 
+            MONGO_INITDB_DATABASE: bot_users
+        ports:
+            - 27017:27017
+        volumes:
+            - ./mongo-volume:/data/db
+    bot:
+        image: #your_image
+        container_name: xur_bot
+        restart: always
+        links: 
+            - mongo
+        environment: 
+            DESTINY_API_KEY: ""
+            TG_API_KEY: ""
+            DATABASE: ""
